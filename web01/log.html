@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - 성남 문화 관광</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+    <header id="hd">
+        <div class="container">
+            <a href="practice.html" class="logo">
+                <img src="./images/logo.jpg" alt="성남문화관광로고" style="height: 50px;">
+            </a>
+            <nav class="gnb">
+                <ul class="menu">
+                    <li><a href="sub1.html">성남여행</a></li>
+                    <li><a href="sub2.html">축제/행사</a></li>
+                    <li><a href="sub3.html">역사/문화</a></li>
+                    <li><a href="sub4.html">여행길잡이</a></li>
+                    <li><a href="sub5.html">커뮤니티</a></li>
+                </ul>
+            </nav>
+            <nav class="tnb">
+                <a href="log.html">로그인</a>
+                <a href="join.html">회원가입</a>
+                <a href="contact.html">Contact US</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="sub_visual" style="background-color: #333;">
+        <div class="sub_tit_box">
+            <h2>로그인</h2>
+            <p>로그인 후 더 많은 서비스를 이용해보세요.</p>
+        </div>
+    </div>
+
+    <main class="container page">
+        <section class="login_wrap">
+
+            <input type="radio" name="login_tab" id="tab_member" class="tab_radio" checked>
+            <input type="radio" name="login_tab" id="tab_non" class="tab_radio">
+
+            <h2 class="page_title">
+                <img src="./picture/login.png" alt="로그인 아이콘" class="tit_icon">
+                로그인
+            </h2>
+
+            <div class="tab_btn_box">
+                <label for="tab_member" class="tab_label">회원 로그인</label>
+                <label for="tab_non" class="tab_label">비회원 로그인</label>
+            </div>
+
+            <div class="login_content content_member">
+                <form action="#" method="post" class="login_form">
+                    <div class="input_box">
+                        <input type="text" id="uid" placeholder="아이디를 입력하세요">
+                        <input type="password" id="upw" placeholder="비밀번호를 입력하세요">
+                    </div>
+                    <div class="btn_box">
+                        <button type="submit" class="btn_login">로그인</button>
+                    </div>
+                    <ul class="find_box">
+                        <li><a href="find_id.html">아이디 찾기</a></li>
+                        <li><a href="find_pw.html">비밀번호 찾기</a></li>
+                        <li><a href="join.html">회원가입</a></li>
+                    </ul>
+                </form>
+            </div>
+
+            <div class="login_content content_non">
+                <div class="non_member_info">
+                    <p class="nm_tit">비회원 로그인 안내</p>
+                    <p class="nm_desc">비회원은 본인인증을 통해 로그인이 가능합니다.<br>
+                    아래 인증 수단 중 하나를 선택해 주세요.</p>
+                </div>
+                <div class="auth_btn_box">
+                    <a href="#" class="btn_auth phone">휴대폰 인증</a>
+                    <a href="#" class="btn_auth ipin">아이핀(I-PIN) 인증</a>
+                </div>
+                <ul class="find_box">
+                    <li><a href="join.html">회원가입</a></li>
+                    <li><a href="contact.html">문의하기</a></li>
+                </ul>
+            </div>
+
+        </section>
+    </main>
+
+    <footer id="ft">
+        <div class="container" style="text-align: center;">
+            <p class="copyright">Copyright ⓒ SEONGNAM CITY. All Rights Reserved.</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

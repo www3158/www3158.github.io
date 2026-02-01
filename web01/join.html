@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 - 성남 문화 관광</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+    <header id="hd">
+        <div class="container">
+            <a href="practice.html" class="logo">
+                <img src="./images/logo.jpg" alt="성남문화관광로고" style="height: 50px;">
+            </a>
+            <nav class="gnb">
+                <ul class="menu">
+                    <li>
+                        <a href="sub1.html">성남여행</a>
+                        <ul class="sub">
+                            <li><a href="sub11.html">성남8경</a></li>
+                            <li><a href="sub12.html">공원/자연</a></li>
+                            <li><a href="sub13.html">쇼핑/거리</a></li>
+                            <li><a href="sub14.html">박물관/전시관</a></li>
+                            <li><a href="sub15.html">맛집탐방</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="sub2.html">축제/행사</a>
+                        <ul class="sub">
+                            <li><a href="sub21.html">성남문화예술제</a></li>
+                            <li><a href="sub22.html">탄천페스티벌</a></li>
+                            <li><a href="sub23.html">파크콘서트</a></li>
+                            <li><a href="sub24.html">모란민속5일장</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="sub3.html">역사/문화</a>
+                        <ul class="sub">
+                            <li><a href="#">남한산성(세계유산)</a></li>
+                            <li><a href="sub31.html">봉국사</a></li>
+                            <li><a href="sub32.html">판교박물관</a></li>
+                            <li><a href="#">성남아트센터</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="sub4.html">여행길잡이</a>
+                        <ul class="sub">
+                            <li><a href="sub41.html">여행준비</a></li>
+                            <li><a href="sub42.html">시티투어버스</a></li>
+                            <li><a href="#">공영주차장안내</a></li>
+                            <li><a href="#">관광지도신청</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="sub5.html">커뮤니티</a>
+                        <ul class="sub">
+                            <li><a href="sub51.html">새소식</a></li>
+                            <li><a href="sub52.html">포토갤러리</a></li>
+                            <li><a href="#">여행후기</a></li>
+                            <li><a href="#">Q&A</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="tnb">
+                <a href="log.html">로그인</a>
+                <a href="join.html">회원가입</a>
+                <a href="contact.html">Contact US</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="sub_visual" style="background-color: #333;">
+        <div class="sub_tit_box">
+            <h2>회원가입</h2>
+            <p>성남 문화관광의 회원이 되어 다양한 혜택을 누려보세요.</p>
+        </div>
+    </div>
+
+    <main class="container page">
+        <section class="join_wrap">
+            <h2 class="page_title">회원가입</h2>
+            
+            <form action="#" method="post" class="join_form">
+                <p class="join_info"><span class="req">*</span> 표시는 필수 입력 항목입니다.</p>
+                
+                <table class="join_table">
+                    <colgroup>
+                        <col style="width: 150px;">
+                        <col style="width: auto;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th><label for="uid">아이디 <span class="req">*</span></label></th>
+                            <td>
+                                <input type="text" id="uid" class="in_txt" placeholder="아이디 입력">
+                                <button type="button" class="btn_check">중복확인</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="upw">비밀번호 <span class="req">*</span></label></th>
+                            <td><input type="password" id="upw" class="in_txt" placeholder="비밀번호 입력"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="upw_chk">비밀번호 확인 <span class="req">*</span></label></th>
+                            <td><input type="password" id="upw_chk" class="in_txt" placeholder="비밀번호 재입력"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="uname">이름 <span class="req">*</span></label></th>
+                            <td><input type="text" id="uname" class="in_txt"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="uemail">이메일</label></th>
+                            <td>
+                                <input type="text" id="uemail" class="in_txt"> @ 
+                                <select class="in_sel">
+                                    <option value="">직접입력</option>
+                                    <option value="naver.com">naver.com</option>
+                                    <option value="gmail.com">gmail.com</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="uphone">휴대전화</label></th>
+                            <td>
+                                <select id="uphone" class="in_sel">
+                                    <option>010</option>
+                                    <option>011</option>
+                                </select>
+                                - <input type="text" class="in_txt" style="width:80px;">
+                                - <input type="text" class="in_txt" style="width:80px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="btn_wrap_center">
+                    <button type="button" class="btn_cancel">취소</button>
+                    <button type="submit" class="btn_submit">회원가입</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer id="ft">
+        <div class="container" style="text-align: center;">
+            <p class="copyright">Copyright ⓒ SEONGNAM CITY. All Rights Reserved.</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
