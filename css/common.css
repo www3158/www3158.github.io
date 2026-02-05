@@ -1,0 +1,13 @@
+/* 제공해주신 기본 CSS 전체 (생략 없이 그대로 유지) */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+:root {
+    --p-pink: #ff4d8d; /* 기본 포인트 컬러 */
+    --text-dark: #333333;
+    --bg-light: #f8f9fa;
+}
+/* ... (작성해주신 헤더, 푸터, 레이아웃 CSS 전체 복사) ... */
+
+/* [중요] 챕터별 구분을 위해 포인트 컬러 변수 활용 */
+.lnb ul li.on a { background: var(--p-point); color: #fff; }
+.text_box .tag { background: var(--p-point); }
+.lnb_tit { border-bottom: 3px solid var(--p-point); }

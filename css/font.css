@@ -1,0 +1,89 @@
+/* ================================================================
+   S-Core Dream (에스코어 드림 1-9)
+   ================================================================ */
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream1.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream2.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream3.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream4.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream5.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream6.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream7.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream8.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream9.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* ================================================================
+   Gmarket Sans (G마켓 산스)
+   ================================================================ */
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('../fonts/GmarketSansTTFLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('../fonts/GmarketSansTTFMedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* ================================================================
+   Busan Font (부산체)
+   ================================================================ */
+@font-face {
+    font-family: 'BusanFont';
+    src: url('../fonts/BusanFont_Provisional.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
