@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 - 부산의 역사</title>
+    <link rel="stylesheet" href="css/sub/font.css">
+    <link rel="stylesheet" href="css/sub/chapter.css">
+    <link rel="stylesheet" href="css/sub/footer.css">
+    <link rel="stylesheet" href="css/sub/signup.css">
+</head>
+<body>
+
+    <header id="hd">
+        <div class="hd_container">
+            <a href="index.html" class="logo">
+                <img src="./images/busanlogo.png" alt="부산광역시 로고">
+            </a>
+            <nav class="gnb">
+                <ul class="menu">
+                    <li>
+                        <a href="#">부산 지역</a>
+                        <ul class="sub">
+                            <li><a href="sub11.html">부산 행정구역 소개</a></li>
+                            <li><a href="sub12.html">2050 부산 도시개발계획</a></li>
+                            <li><a href="sub13.html">부산의 문화</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">부산 여행</a>
+                        <ul class="sub">
+                            <li><a href="sub11.html">추천 여행</a></li>
+                            <li><a href="sub12.html">해양 & 테마</a></li>
+                            <li><a href="sub13.html">여행 공유</a></li>
+                            <li><a href="sub14.html">가이드북 & 지도</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">부산 역사</a>
+                        <ul class="sub">
+                            <li><a href="sub11.html">선사시대</a></li>
+                            <li><a href="sub12.html">조선시대</a></li>
+                            <li><a href="sub13.html">개항/근대</a></li>
+                            <li><a href="sub14.html">현대/글로벌</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">부산 소식</a>
+                        <ul class="sub">
+                            <li><a href="sub11.html">부산 주요 현안</a></li>
+                            <li><a href="sub12.html">오늘의 부산</a></li>
+                            <li><a href="sub13.html">부산 문화·라이프</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">커뮤니티</a>
+                        <ul class="sub">
+                            <li><a href="sub11.html">사이트 후기</a></li>
+                            <li><a href="sub12.html">자유게시판</a></li>
+                            <li><a href="sub13.html">Q&A</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="tnb">
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="signup_wrapper">
+        <div class="signup_container">
+            <div class="signup_title">
+                <h2>회원가입</h2>
+                <p>부산의 역사를 함께 기록할 회원을 모집합니다.</p>
+            </div>
+
+                <div class="form_section">
+                    <label for="email">이메일 계정</label>
+                    <div class="input_group">
+                        <input type="email" id="email" name="email" 
+                            placeholder="example@busan.com" 
+                            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                            required>
+                        
+                        <input type="checkbox" id="check_trigger" class="hidden_check">
+                        <label for="check_trigger" class="form_btn">중복확인</label>
+                        
+                        <span class="custom_alert">중복 확인이 완료되었습니다!</span>
+                    </div>
+                </div>
+
+                <div class="form_section">
+                    <label for="pw">비밀번호</label>
+                    <input type="password" id="pw" name="pw" placeholder="8~16자 입력" minlength="8" maxlength="16" required>
+                    <p class="guide_txt">※ 영문, 숫자 포함 8자 이상 입력해 주세요.</p>
+                </div>
+
+                <div class="form_section">
+                    <label for="pw_confirm">비밀번호 확인</label>
+                    <input type="password" id="pw_confirm" placeholder="동일하게 입력해 주세요" required>
+                </div>
+
+                <div class="form_section">
+                    <label for="phone">휴대폰 번호 인증</label>
+                    <div class="input_group">
+                        <input type="tel" id="phone" name="phone" 
+                            pattern="010-[0-9]{4}-[0-9]{4}" 
+                            placeholder="010-0000-0000" required>
+                        
+                        <input type="checkbox" id="phone_check_trigger" class="hidden_check">
+                        <label for="phone_check_trigger" class="form_btn">인증요청</label>
+                        
+                        <span class="custom_alert phone_alert">휴대폰 메시지를 보냈다! 1분 안에 입력해주세요.</span>
+                    </div>
+                </div>
+
+        <div class="agree_box">
+            <div class="agree_row total">
+                <input type="checkbox" id="all_agree">
+                <label for="all_agree">전체 동의하기</label>
+            </div>
+            <div class="agree_row">
+                <input type="checkbox" id="agree1" name="agree1" required>
+                <label for="agree1">[필수] 이용약관 동의</label>
+                <a href="terms_service.html" target="_blank" class="detail_link">자세히 보기</a>
+            </div>
+            <div class="agree_row">
+                <input type="checkbox" id="agree2" name="agree2" required>
+                <label for="agree2">[필수] 개인정보 수집 이용 동의</label>
+                <a href="terms_privacy.html" target="_blank" class="detail_link">자세히 보기</a>
+            </div>
+        </div>
+
+                <button type="submit" class="submit_btn">가입 완료</button>
+            </form>
+            
+            <p class="login_link">이미 계정이 있으신가요? <a href="login.html">로그인</a></p>
+        </div>
+    </main>
+
+    <footer id="ft">
+        <div class="ft_container">
+            <div class="ft_left">
+                <div class="f_logo">
+                    <img src="./images/mix_logo_11.png" alt="부산광역시 로고">
+                </div>
+                <p class="f_address">
+                    (우 47545) 부산광역시 연제구 중앙대로 1001(연산동)
+                </p>
+                <div class="f_links">
+                    <a href="#">시청 찾아오시는 길</a>
+                    <a href="#">주차안내</a>
+                    <a href="#">이용안내</a>
+                </div>
+            </div>
+
+            <div class="ft_center">
+                <nav class="fnb">
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">이메일무단수집거부</a>
+                    <a href="#">저작권정책</a>
+                </nav>
+                <p class="copyright">
+                    Copyright ⓒ 2026 BUSAN METROPOLITAN CITY. All Rights Reserved.
+                </p>
+            </div>
+
+            <div class="ft_right">
+                <a href="https://www.instagram.com/busancity">
+                    <img src="./icon/Instagram.png" alt="부산시 공식 인스타그램">
+                    <span>인스타</span>
+                </a>
+                <a href="https://www.facebook.com/BusanCity">
+                    <img src="./icon/facebook1.png" alt="부산시 공식 페이스북">
+                    <span>페이스북</span>
+                </a>
+                <a href="https://www.youtube.com/@Busan_is_good">
+                    <img src="./icon/youtube1.png" alt="부산시 공식 유튜브">
+                    <span>유튜브</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

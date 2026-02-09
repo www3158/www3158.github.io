@@ -1,0 +1,130 @@
+/* --- 본문 레이아웃 --- */
+.content_wrap { 
+    width: 100%; 
+    padding-bottom: 80px; 
+    overflow: hidden; 
+}
+
+.main_container { 
+    max-width: 1400px; 
+    margin: 0 auto; 
+    padding: 100px 40px; 
+    position: relative; 
+    display: flex; 
+    gap: 60px; 
+}
+
+/* 사이드 네비게이션 (LNB) */
+.lnb { 
+    width: 200px; 
+    position: sticky; 
+    top: 140px; 
+    flex-shrink: 0; 
+    align-self: flex-start;
+    z-index: 10;
+} 
+
+.lnb_tit {
+    font-size: 24px; 
+    border-bottom: 3px solid #333333; 
+    padding-bottom: 15px; 
+    margin-bottom: 20px;
+}
+
+.lnb ul li a {
+    display: block; 
+    padding: 15px 20px; 
+    background: #f9f9f9; 
+    margin-bottom: 8px; 
+    border-radius: 5px; 
+    color: #555;
+    transition: all 0.3s ease-in-out;
+}
+
+.lnb ul li.on a { 
+    background: #555555; 
+    color: #fff; 
+    font-weight: bold; 
+}
+
+/* 본문 콘텐츠 스크롤 영역 */
+.scroll_container { 
+    flex: 1; 
+    min-width: 0; 
+}
+
+.history_item { 
+    width: 100%; 
+    margin-bottom: 100px; 
+    border-bottom: 1px solid #eee; 
+    padding-bottom: 50px;
+    display: flex; 
+    align-items: flex-start; 
+    gap: 40px;
+}
+
+.sticky_img { 
+    width: 450px; 
+    position: sticky; 
+    top: 140px; 
+    height: 350px; 
+    flex-shrink: 0;
+    overflow: hidden; 
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.sticky_img img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+.text_box { 
+    flex: 1; 
+    min-width: 0; 
+    margin-top: -5px;
+}
+
+.text_box h3 { 
+    font-size: 28px; 
+    margin: 10px 0 20px; 
+    line-height: 1.4; 
+    word-break: keep-all; 
+    overflow-wrap: break-word; 
+}
+
+.text_box .main_text { 
+    font-size: 17px; 
+    line-height: 1.7; 
+    color: #444; 
+    margin-bottom: 25px; 
+    word-break: keep-all; 
+}
+
+/* 상세 리스트 */
+.detail_list { 
+    border-top: 1px solid #eee; 
+    margin-top: 20px; 
+    padding-top: 20px; 
+}
+
+.detail_list li {
+    display: flex; 
+    margin-bottom: 15px; 
+    font-size: 15px; 
+    line-height: 1.6; 
+}
+
+.detail_list li .lbl { 
+    width: 100px; 
+    color: #002d5a; 
+    font-weight: bold; 
+    flex-shrink: 0; 
+}
+
+.detail_list li .val { 
+    flex: 1; 
+    color: #666; 
+    word-break: keep-all; 
+}

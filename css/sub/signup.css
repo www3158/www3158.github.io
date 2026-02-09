@@ -1,0 +1,111 @@
+/* --- 회원가입 본문 전용 스타일 (.signup_wrapper 기반 변수) --- */
+.signup_wrapper {
+    --point: #333;
+    --gray: #888;
+    background-color: #f8f9fa;
+    padding: 150px 0 100px; /* 헤더 공간 */
+    font-family: 'S-CoreDream', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+.signup_container {
+    background: #fff; width: 100%; max-width: 1280px;
+    padding: 50px 150px; border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+.signup_title { text-align: center; margin-bottom: 40px; }
+.signup_title h2 { font-family: 'GmarketSans', sans-serif; font-size: 28px; margin-bottom: 10px; }
+.signup_title p { color: var(--gray); font-size: 14px; }
+
+.form_section { margin-bottom: 20px; }
+.form_section label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.form_section input {
+    width: 100%; padding: 13px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px;
+}
+
+/* 실시간 유효성 시각화 (JS 미사용) */
+.form_section input:focus { outline: none; border-color: var(--point); }
+.form_section input:not(:placeholder-shown):invalid { border-color: #ff4b4b; }
+
+.input_group { display: flex; gap: 10px; position: relative; text-align: center;}
+.form_btn {
+    flex-shrink: 0; background: #333; color: #fff; border: none;
+    padding: 13px 15px; border-radius: 8px; cursor: pointer; font-size: 13px;
+    display: inline-flex; align-items: center; justify-content: center;
+}
+.guide_txt { font-size: 12px; color: var(--gray); margin-top: 5px; }
+
+.agree_box { background: #f9f9f9; padding: 20px; border-radius: 10px; margin: 30px 0; border: 1px solid #eee; }
+.agree_row { display: flex; align-items: center; margin-bottom: 12px; font-size: 14px; }
+.agree_row input { margin-right: 10px; width: 16px; height: 16px; cursor: pointer; }
+.agree_row.total { border-bottom: 1px solid #ddd; padding-bottom: 12px; margin-bottom: 15px; font-weight: bold; }
+
+.submit_btn {
+    width: 100%; padding: 18px; background: var(--point);
+    color: #fff; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer;
+}
+.login_link { text-align: center; margin-top: 25px; font-size: 14px; color: var(--gray); }
+.login_link a { color: var(--point); font-weight: bold; }
+
+/* 푸터 스타일 */
+#ft { background: #333; color: #fff; padding: 60px 0 40px; }
+.info_footer { max-width: 1400px; margin: 0 auto; display: flex; padding: 0 40px; gap: 40px; margin-bottom: 30px; }
+.f_logo img { height: 40px; filter: brightness(0) invert(1); }
+.f_info p { font-size: 14px; color: #ccc; margin-bottom: 10px; }
+.f_links { display: flex; gap: 20px; font-size: 13px; color: #999; }
+#fnb { max-width: 1400px; margin: 0 auto; padding: 20px 40px; border-top: 1px solid #444; display: flex; gap: 30px; }
+#fnb a { color: #aaa; font-size: 13px; }
+.copyright { text-align: center; font-size: 12px; color: #666; margin-top: 30px; }
+
+/* ------------------------------------------------ */
+/* [통합] 중복확인 & 인증요청 로직 (JS 미사용) */
+/* ------------------------------------------------ */
+
+.hidden_check { display: none; }
+
+.custom_alert {
+    display: none; 
+    position: absolute;
+    top: -45px; right: 0;
+    background: #ff4d8d;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.custom_alert::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; right: 25px;
+    border-left: 5px solid transparent; border-right: 5px solid transparent;
+    border-top: 5px solid #ff4d8d;
+}
+
+/* 1. 이메일 로직: .com까지 완벽할 때만 */
+#email:valid ~ .hidden_check:checked ~ .custom_alert {
+    display: block;
+    animation: alertPop 0.3s ease-out;
+}
+
+/* 2. 휴대폰 로직: 010-0000-0000 형식이 완벽할 때만 */
+#phone:valid ~ #phone_check_trigger:checked ~ .phone_alert {
+    display: block;
+    animation: alertPop 0.3s ease-out;
+}
+
+/* 형식이 틀리면 체크되어도 숨김 */
+#email:invalid ~ .hidden_check:checked ~ .custom_alert,
+#phone:invalid ~ #phone_check_trigger:checked ~ .phone_alert {
+    display: none;
+}
+
+@keyframes alertPop {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

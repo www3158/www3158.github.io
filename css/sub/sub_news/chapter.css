@@ -1,0 +1,204 @@
+/* --- 공통 초기화 및 헤더/푸터 (절대 유지) --- */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+li { list-style: none; }
+a { text-decoration: none; color: inherit; }
+
+body { 
+    font-family: 'Pretendard', sans-serif; 
+    background: #ffffff; 
+    color: #333333; 
+}
+
+/* 헤더 스타일 유지 */
+#hd { width: 100%; height: 80px; background: #fff; border-bottom: 1px solid #eee; position: fixed; top: 0; z-index: 1000; }
+.hd_container { max-width: 1400px; margin: 0 auto; display: flex; 
+    justify-content: space-between; align-items: center; height: 100%; padding: 0 40px; }
+.logo img { height: 55px; width: auto; display: block; }
+.gnb .menu { display: flex; gap: 80px; align-items: center; }
+.gnb .menu > li { position: relative; display: flex; align-items: center; }
+.gnb .menu > li:not(:last-child)::after { content: ''; position: absolute; right: -40px; width: 1px;
+     height: 14px; background-color: #eee; }
+.gnb .menu > li > a { font-family: 'GmarketSans', sans-serif; color: #333; font-weight: 500; 
+    line-height: 80px; white-space: nowrap; transition: all 0.3s; }
+.gnb .menu > li:hover > a { color: #172746; font-weight: 700; }
+.gnb .sub { display: none; position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
+     background: #fff; min-width: 160px; border: 1px solid #eee; 
+     box-shadow: 0 4px 10px rgba(0,0,0,0.05); padding: 10px 0; z-index: 1001; }
+.gnb .menu > li:hover .sub { display: block; }
+.gnb .sub li a { display: block; padding: 10px 20px; color: #333; 
+    font-size: 14px; text-align: center; }
+.gnb .sub li a:hover { background: #f9f9f9; color: #172746; }
+.tnb { font-family: 'S-CoreDream', sans-serif; display: flex; gap: 25px; 
+    font-size: 14px; margin-left: 40px; }
+.tnb a { color: #333; font-weight: 300; transition: all 0.3s; }
+.tnb a:hover { color: #172746; font-weight: 700; }
+
+/* --- [수정] 상단 타이틀 --- */
+.sub_visual {
+    width: 100%; height: 250px; 
+    background: #172746; 
+    text-align: center;
+    padding-top: 140px; 
+}
+
+.sub_visual h2 { 
+    font-size: 32px; 
+    font-weight: 700; 
+    margin-bottom: 10px; 
+    color: #ffffff; /* [수정] 선사시대 문구 색상을 흰색으로 변경 */
+}
+
+.sub_visual p { 
+    color: #ffffff; /* 기존 p태그 흰색 유지 */
+    opacity: 0.8;    /* [선택사항] p태그가 너무 밝다면 살짝 투명도를 주어 계층 구조를 만듭니다 */
+}
+
+/* --- [수정] 본문 레이아웃 --- */
+.content_wrap { width: 100%; padding-bottom: 80px; }
+.main_container { 
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    display: flex;
+    gap: 40px;
+    /*position: relative; /* LNB 위치 제어를 위해 기준 설정 */
+}
+
+/* [핵심수정] 왼쪽 메뉴: 핑크 -> 회색 / 왼쪽으로 이동 */
+.lnb { 
+    width: 220px; 
+    position: sticky; 
+    top: 120px; 
+    float: left;
+    margin-left: 0px; /* 기존 위치보다 왼쪽으로 더 밀어냄 */
+    z-index: 10;
+} 
+
+.lnb_tit {
+    font-size: 24px; 
+    border-bottom: 3px solid #333333; /* 핑크 -> 진한 회색 */
+    padding-bottom: 15px; margin-bottom: 20px;
+}
+
+.lnb ul li a {
+    display: block; 
+    padding: 15px 20px; 
+    background: #f9f9f9; 
+    margin-bottom: 8px; 
+    border-radius: 5px; 
+    color: #555;
+    /* transition: 0.3s; 를 아래와 같이 구체적으로 설정하면 더 부드럽습니다. */
+    transition: all 0.3s ease-in-out;
+}
+
+/* [추가] 일반 메뉴 호버 스타일 */
+.lnb ul li a:hover { 
+    background: #e5e5e5; /* 기존 #eee보다 살짝 더 어둡게 하여 대비 강조 */
+    color: #000;         /* 글자색을 완전한 검정으로 변경 */
+    padding-left: 25px;  /* 마우스 올렸을 때 오른쪽으로 살짝 밀리는 동적인 효과 */
+}
+
+/* [수정] 활성화된 메뉴(on) 스타일 */
+.lnb ul li.on a { 
+    background: #555555; /* 핑크 -> 중간 회색 */
+    color: #fff; 
+    font-weight: bold; 
+}
+
+/* [추가] 활성화된 메뉴 호버 스타일 (현재 페이지임을 더 강조) */
+.lnb ul li.on a:hover {
+    background: #333333; /* 활성 메뉴는 호버 시 더 진하게 */
+    color: #fff;
+    padding-left: 20px;  /* 활성 메뉴는 고정된 느낌을 주도록 이동 폭을 줄임 */
+}
+/* 오른쪽 역사 리스트 */
+.scroll_container { 
+    flex: 1; 
+    float: right;
+}
+
+.history_item { 
+    width: 100%; overflow: hidden; margin-bottom: 100px; 
+    border-bottom: 1px solid #eee; padding-bottom: 50px;
+    display: flex; align-items: flex-start; gap: 40px;
+}
+
+/* --- [수정] 이미지 고정 및 크기 확대 --- */
+
+.sticky_img { 
+    width: 550px;       /* [기존] 450px -> [수정] 550px로 확대 */
+    position: sticky; 
+    top: 120px; 
+    height: 400px;      /* [기존] 350px -> [수정] 400px로 확대 */
+    flex-shrink: 0;
+    overflow: hidden;   /* 이미지가 영역 밖으로 나가지 않도록 설정 */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 약간의 그림자로 입체감 추가 */
+}
+
+.sticky_img img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block;
+}
+
+/* [중요] 이미지 크기가 커졌으므로 텍스트 박스와의 간격 및 너비 재조정 */
+.text_box { 
+    flex: 1; 
+    padding: 0 10px 0 30px; /* 왼쪽 여백을 조금 더 주어 이미지와 분리 */
+}
+
+/* [참고] 전체 컨테이너 너비 내에서 조절되므로 scroll_container의 너비는 유지합니다 */
+.scroll_container { 
+    width: 1060px; 
+    float: right; 
+}
+
+.text_box { flex: 1; padding: 0 20px; }
+.text_box h3 { font-size: 28px; margin: 10px 0 20px; line-height: 1.4; }
+
+/* [핵심수정] CHAPTER 태그 및 글자색: 핑크 -> 네이비(#002d5a) */
+.text_box .tag { 
+    color: #002d5a; /* 핑크 -> 네이비 */
+    font-weight: bold; 
+    font-size: 14px; 
+    letter-spacing: 1px;
+}
+.text_box .main_text { font-size: 18px; line-height: 1.8; color: #444; margin-bottom: 30px; }
+
+/* 상세 설명 리스트 */
+.detail_list { border-top: 1px solid #eee; margin-top: 20px; padding-top: 20px; }
+.detail_list li { overflow: hidden; margin-bottom: 15px; font-size: 16px; line-height: 1.5; }
+
+/* [핵심수정] 상세 리스트 라벨: 핑크 -> 네이비(#002d5a) */
+.detail_list li .lbl { 
+    float: left; width: 110px; 
+    color: #002d5a; /* 핑크 -> 네이비 */
+    font-weight: bold; 
+}
+.detail_list li .val { float: left; width: calc(100% - 110px); color: #666; }
+
+/* 더보기 링크 등 추가 색상 변경이 필요한 경우 */
+.more_link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 15px;
+    color: #002d5a; /* 링크색 네이비 */
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+/* --- 푸터 스타일 유지 --- */
+#ft { clear: both; background: #111; color: #fff; padding: 60px 0;}
+.info_footer { max-width: 1400px; margin: 0 auto; text-align: left; padding: 0 40px; }
+.f_logo { display: inline-block; vertical-align: middle; margin-right: 30px; }
+.f_logo img { height: 35px; filter: brightness(0) invert(1); }
+.f_info { display: inline-block; vertical-align: middle; font-size: 14px; color: #ccc; }
+.f_links { margin-top: 10px; }
+.f_links span { margin-right: 20px; font-size: 13px; cursor: pointer; }
+#fnb { margin-top: 30px; border-top: 1px solid #333; padding-top: 30px; }
+#fnb a { margin: 0 15px; font-size: 14px; color: #999; }
+.copyright { margin-top: 20px; font-size: 12px; color: #666; }

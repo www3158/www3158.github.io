@@ -1,0 +1,167 @@
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream1.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream2.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream3.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream4.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream5.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream6.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream7.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream8.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream';
+    src: url('../fonts/SCDream9.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('../fonts/GmarketSansTTFLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('../fonts/GmarketSansTTFMedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BusanFont';
+    src: url('../fonts/BusanFont_Provisional.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 1. 기본 초기화 및 전체 폰트 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* 기본 폰트를 에스코어 드림으로 설정 (가장 무난하고 깔끔함) */
+    font-family: 'S-CoreDream', sans-serif;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 2. 헤더 및 네비게이션 (Gmarket Sans 적용) */
+#hd .logo {
+    /* 로고 텍스트가 있다면 부산체나 GmarketSans 추천 */
+    font-family: 'GmarketSans', sans-serif;
+    font-weight: 700;
+}
+
+.gnb ul li a {
+    font-family: 'GmarketSans', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #222;
+}
+
+.tnb a {
+    font-family: 'S-CoreDream', sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+/* 3. 메인 콘텐츠 섹션 (부산체 및 강조) */
+.history_sec h2 {
+    /* 섹션 제목은 부산의 느낌을 살려 부산체 적용 */
+    font-family: 'BusanFont', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00462a; /* 부산시 상징색 예시 */
+}
+
+.text_card p {
+    /* 본문은 가독성이 좋은 에스코어 드림 */
+    font-family: 'S-CoreDream', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    word-break: keep-all; /* 한글 줄바꿈 최적화 */
+}
+
+/* 4. 하단 메뉴 및 푸터 */
+.bottom_menu h3 {
+    font-family: 'GmarketSans', sans-serif;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.menu_list li {
+    font-family: 'S-CoreDream', sans-serif;
+    font-weight: 500;
+    list-style: none;
+}
+
+.info_footer p, .f_links span {
+    font-family: 'S-CoreDream', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+}
+
+#ft p {
+    font-family: 'GmarketSans', sans-serif;
+    font-weight: 300;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+/* 5. Sticky Wrapper 보조 (레이아웃 유지용) */
+.sticky_wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 100px 5%;
+    align-items: flex-start;
+}

@@ -1,0 +1,79 @@
+/* ===============================
+   커뮤니티 게시판
+================================ */
+
+.board_content {
+    width: calc(100% - 260px);
+    float: right;
+}
+
+/* 타이틀 */
+.board_title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* 테이블 */
+.board_table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #e5e5e5;
+}
+
+.board_table th,
+.board_table td {
+    border: 1px solid #999;
+    padding: 12px 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.board_table thead th {
+    background: #d3d3d3;
+    font-weight: 600;
+}
+
+.board_table .txt-left {
+    text-align: left;
+    padding-left: 15px;
+}
+
+/* 컬럼 너비 */
+.col-no { width: 70px; }
+.col-writer { width: 120px; }
+.col-date { width: 160px; }
+.col-view { width: 80px; }
+
+/* 페이지네이션 */
+.board_paging {
+    margin: 25px 0;
+    text-align: center;
+}
+
+.board_paging a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 4px 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+.board_paging a.on {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* 글쓰기 버튼 */
+.board_write {
+    text-align: right;
+}
+
+.btn_write {
+    display: inline-block;
+    padding: 10px 22px;
+    background: #ccc;
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+}
