@@ -1,0 +1,458 @@
+{
+  "categories": [
+    {
+      "id": "all",
+      "name": "전체"
+    },
+    {
+      "id": "clothing",
+      "name": "의류"
+    },
+    {
+      "id": "accessories",
+      "name": "액세서리"
+    },
+    {
+      "id": "shoes",
+      "name": "신발"
+    },
+    {
+      "id": "bags",
+      "name": "가방"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "리넨 오버사이즈 재킷",
+      "category": "clothing",
+      "price": 189000,
+      "originalPrice": 240000,
+      "rating": 4.8,
+      "reviewCount": 124,
+      "stock": 15,
+      "badge": "SALE",
+      "description": "고급 리넨 소재로 제작된 오버사이즈 핏 재킷입니다. 봄·여름 시즌에 어울리는 세련된 디자인으로, 다양한 스타일링이 가능합니다.",
+      "images": [
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80",
+        "https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=600&q=80"
+      ],
+      "colors": [
+        "#E8DCC8",
+        "#2C2C2C",
+        "#8B6F4E"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "tags": [
+        "봄",
+        "여름",
+        "오피스룩"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "울 블렌드 코트",
+      "category": "clothing",
+      "price": 320000,
+      "originalPrice": 320000,
+      "rating": 4.9,
+      "reviewCount": 89,
+      "stock": 8,
+      "badge": "NEW",
+      "description": "프리미엄 울 블렌드 소재의 클래식 코트. 타임리스한 실루엣으로 오랜 시간 사랑받는 디자인입니다.",
+      "images": [
+        "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&q=80",
+        "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80"
+      ],
+      "colors": [
+        "#3D3D3D",
+        "#C8B99A",
+        "#1A1A2E"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "tags": [
+        "겨울",
+        "코트",
+        "프리미엄"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "가죽 미니 크로스백",
+      "category": "bags",
+      "price": 156000,
+      "originalPrice": 195000,
+      "rating": 4.7,
+      "reviewCount": 203,
+      "stock": 22,
+      "badge": "SALE",
+      "description": "부드러운 천연 가죽으로 제작된 미니 크로스백. 데일리 필수템으로 어떤 코디에도 잘 어울립니다.",
+      "images": [
+        "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80",
+        "https://images.unsplash.com/photo-1614179689702-355944cd0918?w=600&q=80"
+      ],
+      "colors": [
+        "#8B6F4E",
+        "#1A1A1A",
+        "#C41E3A"
+      ],
+      "sizes": [
+        "ONE SIZE"
+      ],
+      "tags": [
+        "가죽",
+        "미니백",
+        "데일리"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "첼시 앵클 부츠",
+      "category": "shoes",
+      "price": 248000,
+      "originalPrice": 248000,
+      "rating": 4.6,
+      "reviewCount": 167,
+      "stock": 12,
+      "badge": null,
+      "description": "클래식한 첼시 부츠 디자인에 현대적인 감각을 더했습니다. 천연 가죽 소재로 내구성과 착화감이 뛰어납니다.",
+      "images": [
+        "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80",
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80"
+      ],
+      "colors": [
+        "#1A1A1A",
+        "#8B6F4E"
+      ],
+      "sizes": [
+        "230",
+        "235",
+        "240",
+        "245",
+        "250",
+        "255",
+        "260"
+      ],
+      "tags": [
+        "부츠",
+        "가죽",
+        "가을·겨울"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "실버 체인 목걸이",
+      "category": "accessories",
+      "price": 68000,
+      "originalPrice": 68000,
+      "rating": 4.5,
+      "reviewCount": 312,
+      "stock": 45,
+      "badge": "BEST",
+      "description": "925 순은으로 제작된 레이어드 체인 목걸이. 심플하면서도 고급스러운 디자인으로 다양한 스타일에 활용 가능합니다.",
+      "images": [
+        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80",
+        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80"
+      ],
+      "colors": [
+        "#C0C0C0",
+        "#FFD700"
+      ],
+      "sizes": [
+        "ONE SIZE"
+      ],
+      "tags": [
+        "실버",
+        "주얼리",
+        "레이어드"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "와이드 데님 팬츠",
+      "category": "clothing",
+      "price": 112000,
+      "originalPrice": 140000,
+      "rating": 4.7,
+      "reviewCount": 256,
+      "stock": 30,
+      "badge": "SALE",
+      "description": "트렌디한 와이드 핏 데님 팬츠. 고품질 데님 원단을 사용해 착용감이 편안하며 세련된 실루엣을 연출합니다.",
+      "images": [
+        "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&q=80",
+        "https://images.unsplash.com/photo-1582552938357-32b906df40cb?w=600&q=80"
+      ],
+      "colors": [
+        "#5B7FA6",
+        "#1A1A1A",
+        "#8B6F4E"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "tags": [
+        "데님",
+        "와이드",
+        "캐주얼"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "캔버스 토트백",
+      "category": "bags",
+      "price": 78000,
+      "originalPrice": 78000,
+      "rating": 4.4,
+      "reviewCount": 189,
+      "stock": 35,
+      "badge": "NEW",
+      "description": "두꺼운 캔버스 소재로 제작된 실용적인 토트백. 충분한 수납 공간으로 일상에서 활용도가 높습니다.",
+      "images": [
+        "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600&q=80",
+        "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&q=80"
+      ],
+      "colors": [
+        "#E8DCC8",
+        "#1A1A1A",
+        "#4A7C59"
+      ],
+      "sizes": [
+        "ONE SIZE"
+      ],
+      "tags": [
+        "캔버스",
+        "토트백",
+        "데일리"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "스니커즈 로우탑",
+      "category": "shoes",
+      "price": 135000,
+      "originalPrice": 168000,
+      "rating": 4.8,
+      "reviewCount": 445,
+      "stock": 20,
+      "badge": "BEST",
+      "description": "클래식한 로우탑 스니커즈. 어떤 캐주얼 룩에도 잘 어울리며, 하루 종일 편안한 착화감을 제공합니다.",
+      "images": [
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80",
+        "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&q=80"
+      ],
+      "colors": [
+        "#FFFFFF",
+        "#1A1A1A",
+        "#C8B99A"
+      ],
+      "sizes": [
+        "230",
+        "240",
+        "250",
+        "260",
+        "270",
+        "280"
+      ],
+      "tags": [
+        "스니커즈",
+        "캐주얼",
+        "데일리"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "골드 이어링 세트",
+      "category": "accessories",
+      "price": 45000,
+      "originalPrice": 45000,
+      "rating": 4.6,
+      "reviewCount": 278,
+      "stock": 60,
+      "badge": null,
+      "description": "18K 골드 도금 이어링 세트 (3쌍). 후프, 스터드, 드롭 3가지 스타일로 다양하게 연출할 수 있습니다.",
+      "images": [
+        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+        "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=600&q=80"
+      ],
+      "colors": [
+        "#FFD700",
+        "#C0C0C0"
+      ],
+      "sizes": [
+        "ONE SIZE"
+      ],
+      "tags": [
+        "골드",
+        "이어링",
+        "주얼리"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "캐시미어 니트 스웨터",
+      "category": "clothing",
+      "price": 198000,
+      "originalPrice": 248000,
+      "rating": 4.9,
+      "reviewCount": 132,
+      "stock": 10,
+      "badge": "SALE",
+      "description": "100% 캐시미어 소재의 프리미엄 니트 스웨터. 극도로 부드러운 착용감과 보온성을 동시에 갖춘 제품입니다.",
+      "images": [
+        "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=600&q=80",
+        "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80"
+      ],
+      "colors": [
+        "#E8DCC8",
+        "#C41E3A",
+        "#1A1A2E",
+        "#4A7C59"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "tags": [
+        "캐시미어",
+        "니트",
+        "겨울",
+        "프리미엄"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "레더 미니멀 지갑",
+      "category": "accessories",
+      "price": 89000,
+      "originalPrice": 89000,
+      "rating": 4.5,
+      "reviewCount": 98,
+      "stock": 25,
+      "badge": null,
+      "description": "슬림하고 미니멀한 천연 가죽 지갑. 카드 슬롯 6개와 지폐 공간을 갖춘 실용적인 디자인입니다.",
+      "images": [
+        "https://images.unsplash.com/photo-1627123424574-724758594e93?w=600&q=80",
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80"
+      ],
+      "colors": [
+        "#8B6F4E",
+        "#1A1A1A",
+        "#C41E3A"
+      ],
+      "sizes": [
+        "ONE SIZE"
+      ],
+      "tags": [
+        "지갑",
+        "가죽",
+        "미니멀"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "플랫폼 뮬 슬리퍼",
+      "category": "shoes",
+      "price": 98000,
+      "originalPrice": 122000,
+      "rating": 4.3,
+      "reviewCount": 76,
+      "stock": 18,
+      "badge": "NEW",
+      "description": "트렌디한 플랫폼 솔의 뮬 스타일 슬리퍼. 편안한 착용감과 세련된 디자인을 동시에 즐길 수 있습니다.",
+      "images": [
+        "https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=600&q=80",
+        "https://images.unsplash.com/photo-1603487742131-4160ec999306?w=600&q=80"
+      ],
+      "colors": [
+        "#1A1A1A",
+        "#E8DCC8",
+        "#C8B99A"
+      ],
+      "sizes": [
+        "230",
+        "235",
+        "240",
+        "245",
+        "250",
+        "255"
+      ],
+      "tags": [
+        "뮬",
+        "플랫폼",
+        "봄·여름"
+      ]
+    }
+  ],
+  "banners": [
+    {
+      "id": 1,
+      "title": "New Season",
+      "subtitle": "2025 S/S Collection",
+      "description": "트렌드를 앞서가는 새로운 컬렉션을 만나보세요",
+      "cta": "컬렉션 보기",
+      "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1400&q=80",
+      "category": "clothing"
+    },
+    {
+      "id": 2,
+      "title": "Accessories",
+      "subtitle": "Fine Jewelry & More",
+      "description": "당신의 스타일을 완성하는 특별한 액세서리",
+      "cta": "쇼핑하기",
+      "image": "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=1400&q=80",
+      "category": "accessories"
+    },
+    {
+      "id": 3,
+      "title": "Up to 30% OFF",
+      "subtitle": "Season Sale",
+      "description": "한정 기간 특별 할인 혜택을 놓치지 마세요",
+      "cta": "세일 상품 보기",
+      "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1400&q=80",
+      "category": "all"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "productId": 1,
+      "author": "김민지",
+      "rating": 5,
+      "date": "2024-12-15",
+      "content": "소재가 정말 고급스러워요. 여름에도 시원하게 입을 수 있고 핏이 완벽합니다. 재구매 의사 100%!"
+    },
+    {
+      "id": 2,
+      "productId": 1,
+      "author": "이수진",
+      "rating": 4,
+      "date": "2024-12-10",
+      "content": "사이즈 선택에 고민이 있었는데 M을 선택했고 딱 좋아요. 색상도 사진과 동일해서 만족합니다."
+    },
+    {
+      "id": 3,
+      "productId": 3,
+      "author": "박서연",
+      "rating": 5,
+      "date": "2024-12-08",
+      "content": "가죽 질감이 너무 좋고 크기도 딱 적당해요. 매일 들고 다니는데 완전 만족!"
+    }
+  ]
+}
