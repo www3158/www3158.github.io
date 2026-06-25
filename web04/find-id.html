@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>아이디 찾기 | JS</title>
+  <link rel="stylesheet" crossorigin href="./auth.css">
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-brand">
+      <a class="logo" href="./index.html"><span class="logo-mark"><img src="./assets/jeonse-safe-logo-mark.png" alt="" /></span>JS</a>
+      <h1>가입 정보를<br />확인합니다</h1>
+      <p>가입 시 입력한 휴대폰 번호로 아이디를 확인합니다.</p>
+      <a class="back" href="./login.html">로그인으로 돌아가기</a>
+    </section>
+    <section class="auth-card">
+      <h2>아이디 찾기</h2>
+      <p class="desc">휴대폰 번호를 입력해주세요.</p>
+      <form id="findIdForm" class="form">
+        <input id="phone" autocomplete="tel" placeholder="휴대폰 번호" />
+        <button class="submit" type="submit">아이디 찾기</button>
+        <p id="pageStatus" class="status"></p>
+      </form>
+    </section>
+  </main>
+  <script>
+    const API_BASE_URL="http://127.0.0.2:8000";
+    async function api(path, options={}){
+      const response=await fetch(`${API_BASE_URL}${path}`,{
+        headers:{"Content-Type":"application/json",...(options.headers||{})},
+        ...options
+      });
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok)throw new Error(data.detail||"요청을 처리하지 못했습니다.");
+      return data;
+    }
+    findIdForm.onsubmit=async e=>{
+      e.preventDefault();
+      try{
+        const data=await api("/api/auth/find-id",{method:"POST",body:JSON.stringify({phone:phone.value})});
+        pageStatus.classList.remove("error");
+        pageStatus.textContent=`아이디: ${data.username}`;
+      }catch(err){
+        pageStatus.classList.add("error");
+        pageStatus.textContent=err.message;
+      }
+    };
+  </script>
+</body>
+</html>

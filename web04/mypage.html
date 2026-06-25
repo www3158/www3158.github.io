@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>마이페이지 | JS</title>
+  <link rel="stylesheet" crossorigin href="./auth.css">
+  <style>
+    .mypage-card { display:grid; gap:24px; }
+    .profile-block { display:grid; gap:13px; padding-top:18px; border-top:1px solid #eee; }
+    .profile-block:first-of-type { padding-top:0; border-top:0; }
+    .profile-block h3 { margin:0; font-size:19px; }
+    .readonly { background:#f7f3ec; color:#77736d; }
+    .form-note { margin:0; color:#77736d; font-size:13px; line-height:1.55; }
+  </style>
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-brand">
+      <a class="logo" href="./index.html"><span class="logo-mark"><img src="./assets/jeonse-safe-logo-mark.png" alt="" /></span>JS</a>
+      <h1>내 정보와 추천 기준을<br />직접 관리합니다</h1>
+      <p>아이디, 이메일, 휴대폰 번호, 비밀번호와 희망 매물 조건을 수정할 수 있습니다. 수정한 조건은 추천 매물 기준에 반영됩니다.</p>
+      <a class="back" href="./index.html">메인으로 돌아가기</a>
+    </section>
+
+    <section class="auth-card mypage-card">
+      <div>
+        <h2>마이페이지</h2>
+        <p id="userSummary" class="desc">회원 정보를 불러오는 중...</p>
+      </div>
+
+      <form id="profileForm" class="profile-block">
+        <h3>회원 정보</h3>
+        <div class="split">
+          <input id="profileName" class="readonly" placeholder="이름" readonly />
+          <input id="profileUsername" autocomplete="username" placeholder="아이디" />
+        </div>
+        <div class="split">
+          <input id="profileEmail" type="email" autocomplete="email" placeholder="이메일" />
+          <input id="profilePhone" autocomplete="tel" placeholder="휴대폰 번호" />
+        </div>
+        <p class="form-note">비밀번호를 바꾸지 않으려면 아래 비밀번호 칸은 비워두세요.</p>
+        <div class="split">
+          <input id="currentPassword" type="password" autocomplete="current-password" placeholder="현재 비밀번호" />
+          <input id="newPassword" type="password" autocomplete="new-password" placeholder="새 비밀번호" />
+        </div>
+        <input id="newPasswordConfirm" type="password" autocomplete="new-password" placeholder="새 비밀번호 확인" />
+        <button class="submit" type="submit">회원 정보 저장</button>
+        <p id="profileStatus" class="status"></p>
+      </form>
+
+      <form id="preferenceForm" class="profile-block">
+        <h3>추천 조건</h3>
+        <div class="split">
+          <input id="preferredRegion" placeholder="희망 지역" />
+          <input id="preferredDeposit" type="number" placeholder="최대 보증금" />
+        </div>
+        <div class="split">
+          <select id="preferredType">
+            <option value="">주택 유형</option>
+            <option value="APT">아파트</option>
+            <option value="VILLA">빌라</option>
+            <option value="OFFICETEL">오피스텔</option>
+            <option value="SINGLE_MULTI">단독/다가구</option>
+          </select>
+          <input id="moveInMonth" type="month" />
+        </div>
+        <select id="preferencePriority">
+          <option value="">우선순위</option>
+          <option value="safety">안전</option>
+          <option value="transport">교통</option>
+          <option value="price">가격</option>
+        </select>
+        <button class="submit" type="submit">추천 조건 저장</button>
+        <button id="logoutBtn" class="sub-btn" type="button">로그아웃</button>
+        <p id="pageStatus" class="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const API_BASE_URL="http://127.0.0.2:8000";
+    const TOKEN_KEY="jeonseAuthToken";
+    const token=localStorage.getItem(TOKEN_KEY);
+
+    async function api(path, options={}){
+      const response=await fetch(`${API_BASE_URL}${path}`,{
+        headers:{
+          "Content-Type":"application/json",
+          Authorization:`Bearer ${token}`,
+          ...(options.headers||{})
+        },
+        ...options
+      });
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok)throw new Error(data.detail||"요청을 처리하지 못했습니다.");
+      return data;
+    }
+
+    function fillUser(user){
+      userSummary.textContent=`${user.name}님 · ${user.role==="ADMIN"?"관리자":"회원"}`;
+      profileName.value=user.name||"";
+      profileUsername.value=user.username||"";
+      profileEmail.value=user.email||"";
+      profilePhone.value=user.phone||"";
+      const p=user.preferences||{};
+      preferredRegion.value=p.preferred_region||"";
+      preferredDeposit.value=p.max_deposit||"";
+      preferredType.value=p.preferred_type||"";
+      moveInMonth.value=p.move_in_month||"";
+      preferencePriority.value=p.priority||"";
+    }
+
+    async function loadMe(){
+      if(!token){
+        location.href="./login.html";
+        return;
+      }
+      try{
+        const user=await api("/api/auth/me");
+        fillUser(user);
+      }catch(err){
+        pageStatus.classList.add("error");
+        pageStatus.textContent=err.message;
+      }
+    }
+
+    profileForm.onsubmit=async e=>{
+      e.preventDefault();
+      profileStatus.classList.remove("error");
+      profileStatus.textContent="";
+      if(newPassword.value!==newPasswordConfirm.value){
+        profileStatus.classList.add("error");
+        profileStatus.textContent="새 비밀번호가 일치하지 않습니다.";
+        return;
+      }
+      try{
+        const data=await api("/api/auth/me",{
+          method:"PUT",
+          body:JSON.stringify({
+            username:profileUsername.value.trim(),
+            email:profileEmail.value.trim()||null,
+            phone:profilePhone.value.trim()||null,
+            current_password:currentPassword.value||null,
+            new_password:newPassword.value||null
+          })
+        });
+        fillUser(data.user);
+        currentPassword.value="";
+        newPassword.value="";
+        newPasswordConfirm.value="";
+        profileStatus.textContent="회원 정보가 저장되었습니다.";
+      }catch(err){
+        profileStatus.classList.add("error");
+        profileStatus.textContent=err.message;
+      }
+    };
+
+    preferenceForm.onsubmit=async e=>{
+      e.preventDefault();
+      try{
+        await api("/api/auth/preferences",{
+          method:"PUT",
+          body:JSON.stringify({
+            preferred_region:preferredRegion.value.trim(),
+            max_deposit:preferredDeposit.value?Number(preferredDeposit.value):null,
+            preferred_type:preferredType.value||null,
+            move_in_month:moveInMonth.value||null,
+            priority:preferencePriority.value||null
+          })
+        });
+        pageStatus.classList.remove("error");
+        pageStatus.textContent="추천 조건을 저장했습니다.";
+      }catch(err){
+        pageStatus.classList.add("error");
+        pageStatus.textContent=err.message;
+      }
+    };
+
+    logoutBtn.onclick=()=>{
+      localStorage.removeItem(TOKEN_KEY);
+      location.href="./index.html";
+    };
+    loadMe();
+  </script>
+</body>
+</html>

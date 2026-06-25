@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>회원가입 | JS</title>
+  <link rel="stylesheet" crossorigin href="./auth.css">
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-brand">
+      <a class="logo" href="./index.html"><span class="logo-mark"><img src="./assets/jeonse-safe-logo-mark.png" alt="" /></span>JS</a>
+      <h1>희망 조건을 기반으로<br />전세 매물을 비교합니다</h1>
+      <p>희망 지역과 보증금 조건은 추천 매물과 전세가 비교 리포트의 기준으로 사용됩니다. 가입 후 언제든 수정할 수 있습니다.</p>
+      <a class="back" href="./login.html">이미 계정이 있습니다</a>
+    </section>
+
+    <section class="auth-card">
+      <h2>회원가입</h2>
+      <p class="desc">계정 정보와 희망 조건을 입력해주세요. Gmail 이메일 인증 후 가입할 수 있습니다.</p>
+
+      <form id="signupForm" class="form">
+        <div class="split">
+          <input id="signupId" autocomplete="username" placeholder="아이디" />
+          <input id="signupName" autocomplete="name" placeholder="이름" />
+        </div>
+        <div class="split">
+          <input id="signupPassword" type="password" autocomplete="new-password" placeholder="비밀번호" />
+          <input id="signupPasswordConfirm" type="password" autocomplete="new-password" placeholder="비밀번호 확인" />
+        </div>
+
+        <div class="section-box">
+          <h3>이메일 인증</h3>
+          <div class="phone-row">
+            <input id="signupEmail" type="email" autocomplete="email" placeholder="이메일 주소" />
+            <button id="sendEmailCode" class="sub-btn" type="button">인증번호 발송</button>
+          </div>
+          <div class="phone-row">
+            <input id="emailCode" inputmode="numeric" placeholder="인증번호" />
+            <button id="verifyEmailCode" class="sub-btn" type="button">인증 확인</button>
+          </div>
+          <p id="emailStatus" class="status"></p>
+        </div>
+
+        <div class="section-box">
+          <h3>희망 조건</h3>
+          <div class="split">
+            <input id="preferredRegion" placeholder="희망 지역" />
+            <input id="preferredDeposit" type="number" placeholder="최대 보증금" />
+          </div>
+          <div class="split">
+            <select id="preferredType">
+              <option value="">주택 유형</option>
+              <option value="APT">아파트</option>
+              <option value="VILLA">빌라</option>
+              <option value="OFFICETEL">오피스텔</option>
+              <option value="SINGLE_MULTI">단독/다가구</option>
+            </select>
+            <input id="moveInMonth" type="month" />
+          </div>
+          <select id="preferencePriority">
+            <option value="">우선순위</option>
+            <option value="safety">안전</option>
+            <option value="transport">교통</option>
+            <option value="price">가격</option>
+          </select>
+        </div>
+
+        <div class="section-box checks">
+          <label class="check"><input id="termsAgree" type="checkbox" /> 이용약관에 동의합니다.</label>
+          <label class="check"><input id="privacyAgree" type="checkbox" /> 개인정보 처리방침에 동의합니다.</label>
+        </div>
+
+        <button class="submit" type="submit">회원가입</button>
+        <p id="signupStatus" class="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const API_BASE_URL="http://127.0.0.2:8000";
+    const TOKEN_KEY="jeonseAuthToken";
+    let emailVerified=false;
+
+    async function api(path, options={}){
+      const response=await fetch(`${API_BASE_URL}${path}`,{
+        headers:{"Content-Type":"application/json",...(options.headers||{})},
+        ...options
+      });
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok)throw new Error(data.detail||"요청을 처리하지 못했습니다.");
+      return data;
+    }
+
+    sendEmailCode.onclick=async ()=>{
+      try{
+        emailStatus.classList.remove("error");
+        await api("/api/auth/send-email-code",{
+          method:"POST",
+          body:JSON.stringify({email:signupEmail.value})
+        });
+        emailStatus.textContent="인증번호를 이메일로 발송했습니다.";
+      }catch(err){
+        emailStatus.classList.add("error");
+        emailStatus.textContent=err.message;
+      }
+    };
+    verifyEmailCode.onclick=async ()=>{
+      try{
+        await api("/api/auth/verify-email-code",{
+          method:"POST",
+          body:JSON.stringify({email:signupEmail.value,code:emailCode.value})
+        });
+        emailVerified=true;
+        emailStatus.classList.remove("error");
+        emailStatus.textContent="이메일 인증이 완료되었습니다.";
+      }catch(err){
+        emailVerified=false;
+        emailStatus.classList.add("error");
+        emailStatus.textContent=err.message;
+      }
+    };
+    signupForm.onsubmit=async e=>{
+      e.preventDefault();
+      signupStatus.classList.remove("error");
+      if(signupPassword.value!==signupPasswordConfirm.value){
+        signupStatus.classList.add("error");
+        signupStatus.textContent="비밀번호가 일치하지 않습니다.";
+        return;
+      }
+      if(!emailVerified){
+        signupStatus.classList.add("error");
+        signupStatus.textContent="이메일 인증을 완료해주세요.";
+        return;
+      }
+      if(!termsAgree.checked||!privacyAgree.checked){
+        signupStatus.classList.add("error");
+        signupStatus.textContent="필수 약관에 동의해주세요.";
+        return;
+      }
+      try{
+        const data=await api("/api/auth/register",{
+          method:"POST",
+          body:JSON.stringify({
+            username:signupId.value.trim(),
+            password:signupPassword.value,
+            name:signupName.value.trim(),
+            email:signupEmail.value.trim(),
+            preferred_region:preferredRegion.value.trim(),
+            max_deposit:preferredDeposit.value?Number(preferredDeposit.value):null,
+            preferred_type:preferredType.value||null,
+            move_in_month:moveInMonth.value||null,
+            priority:preferencePriority.value||null
+          })
+        });
+        localStorage.setItem(TOKEN_KEY,data.token);
+        location.href="./index.html";
+      }catch(err){
+        signupStatus.classList.add("error");
+        signupStatus.textContent=err.message;
+      }
+    };
+  </script>
+</body>
+</html>
