@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS app_inquiries (
     phone VARCHAR(40) NOT NULL,
     inquiry_type VARCHAR(80) NOT NULL,
     message TEXT NOT NULL,
-    status VARCHAR(30) NOT NULL DEFAULT '대기',
+    status VARCHAR(30) NOT NULL DEFAULT 'pending',
     answer TEXT,
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS app_checklist_items (
     id BIGSERIAL PRIMARY KEY,
     title TEXT NOT NULL,
     description TEXT NOT NULL,
-    category VARCHAR(40) NOT NULL DEFAULT '기본',
+    category VARCHAR(40) NOT NULL DEFAULT 'basic',
     sort_order INTEGER NOT NULL DEFAULT 0,
     active BOOLEAN NOT NULL DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT NOW(),
