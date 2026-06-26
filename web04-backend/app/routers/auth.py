@@ -5,9 +5,11 @@ import json
 import os
 import secrets
 import smtplib
+import socket
 import time
 import urllib.error
 import urllib.request
+from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from email.message import EmailMessage
 from typing import Optional
@@ -248,6 +250,20 @@ def normalize_email(email: str) -> str:
     return email.strip().lower()
 
 
+@contextmanager
+def force_ipv4_dns():
+    original_getaddrinfo = socket.getaddrinfo
+
+    def getaddrinfo_ipv4(host, port, family=0, type=0, proto=0, flags=0):
+        return original_getaddrinfo(host, port, socket.AF_INET, type, proto, flags)
+
+    socket.getaddrinfo = getaddrinfo_ipv4
+    try:
+        yield
+    finally:
+        socket.getaddrinfo = original_getaddrinfo
+
+
 def send_email_code(email: str, code: str):
     load_dotenv(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".env")), override=True)
     smtp_user = os.getenv("GMAIL_SMTP_USER")
@@ -261,10 +277,11 @@ def send_email_code(email: str, code: str):
     message["To"] = email
     message.set_content(f"전세가드 AI 회원가입 인증번호는 {code}입니다.\n\n5분 안에 입력해주세요.")
     try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=8) as smtp:
-            smtp.login(smtp_user, smtp_password)
-            smtp.send_message(message)
-    except smtplib.SMTPException as exc:
+        with force_ipv4_dns():
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=8) as smtp:
+                smtp.login(smtp_user, smtp_password)
+                smtp.send_message(message)
+    except (smtplib.SMTPException, OSError, TimeoutError) as exc:
         raise HTTPException(status_code=502, detail="이메일 발송에 실패했습니다.") from exc
 
 
