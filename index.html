@@ -26,12 +26,12 @@ h1{font-size:clamp(46px,8vw,98px);line-height:.95;margin:14px 0;letter-spacing:-
 .card{border:3px solid #111;padding:26px;background:#fff;box-shadow:8px 8px 0 #111;min-width:0}
 .card h2{margin:0 0 12px;font-size:30px;letter-spacing:-.04em}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.project-section-title{grid-column:1/-1;border-bottom:3px solid #111;padding:8px 0 6px;margin-top:8px;font-size:18px;font-weight:900;letter-spacing:.02em}
 .skill,.project{border:2px solid #111;padding:20px;background:#fff;min-width:0}
 .skill h3,.project h3{margin:0 0 8px;font-size:22px;letter-spacing:-.03em}
 .project span{color:#666;font-weight:800}
 .tech-badges{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 12px;min-width:0;align-items:center}
 .tech-badge{display:block;width:auto;height:28px;max-width:100%}
-.hero-tech{margin-top:18px}
 .project{display:flex;flex-direction:column;min-height:100%}
 .project .tech-badges{margin-top:12px}
 .project-preview{display:block;width:100%;margin-top:auto;padding:0;border:2px solid #111;background:#fff;color:#111;box-shadow:4px 4px 0 #111;cursor:pointer;text-align:left;font:inherit}
@@ -51,8 +51,12 @@ body.shot-lock{overflow:hidden}
 .flow{display:flex;flex-wrap:wrap;gap:8px}
 .step{background:#111;color:#fff;padding:10px 14px;border-radius:999px;font-weight:800}
 .step .tech-badge{height:30px}
-.contact-line{display:flex;flex-wrap:wrap;gap:10px}
-.contact-line a{color:#111;text-decoration:none;border:2px solid #111;padding:10px 14px;font-weight:800;background:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.contact-line{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.contact-line a,.contact-line button,.contact-form button{color:#111;text-decoration:none;border:2px solid #111;padding:10px 14px;font-weight:800;background:#fff;box-shadow:3px 3px 0 #111;cursor:pointer}
+.contact-form{display:grid;gap:10px}
+.contact-form input,.contact-form textarea{width:100%;border:2px solid #111;background:#fff;padding:10px 12px;font:inherit}
+.contact-form textarea{min-height:130px;resize:vertical}
 footer{border-top:3px solid #111;padding-top:20px;color:#555}
 @media(max-width:820px){
   .wrap{padding:36px 20px}
@@ -68,8 +72,16 @@ footer{border-top:3px solid #111;padding-top:20px;color:#555}
   .tech-badge{height:24px}
   .step{padding:8px 10px}
   .step .tech-badge{height:24px}
+  .contact-grid{grid-template-columns:1fr}
   .shot-modal{padding:14px}
   .shot-modal-head{align-items:flex-start}
+}
+@media print{
+  body{background:#fff}
+  .wrap{max-width:none;padding:0}
+  .card,.avatar-card{box-shadow:none}
+  .contact-form,.contact-line button,.shot-modal{display:none!important}
+  .project-preview{break-inside:avoid}
 }
 </style>
 </head>
@@ -84,7 +96,6 @@ footer{border-top:3px solid #111;padding-top:20px;color:#555}
       주요 기술 스택 기반 프로젝트를 통해
       데이터 수집, AI 추론, API 서버, 데이터베이스, 운영 대시보드까지 이어지는 서비스 흐름을 구현
     </p>
-    <div class="tech-badges hero-tech" aria-label="Spring Boot 3.x, FastAPI 0.x, Vue.js 3, PostgreSQL 16, OpenCV 4.x, YOLO v8, OCR v1"><img class="tech-badge" src="https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=flat-square&amp;logo=springboot&amp;logoColor=white" alt="Spring Boot 3.x" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/FastAPI-0.x-009688?style=flat-square&amp;logo=fastapi&amp;logoColor=white" alt="FastAPI 0.x" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/Vue.js-3-4FC08D?style=flat-square&amp;logo=vuedotjs&amp;logoColor=white" alt="Vue.js 3" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&amp;logo=postgresql&amp;logoColor=white" alt="PostgreSQL 16" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/OpenCV-4.x-5C3EE8?style=flat-square&amp;logo=opencv&amp;logoColor=white" alt="OpenCV 4.x" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/YOLO-v8-00FFFF?style=flat-square&amp;logo=ultralytics&amp;logoColor=111111" alt="YOLO v8" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/OCR-v1-111111?style=flat-square" alt="OCR v1" loading="lazy"></div>
   </div>
   <aside class="avatar-card">
     <div class="avatar-top"><span>Profile</span><span>PJ</span></div>
@@ -103,16 +114,35 @@ footer{border-top:3px solid #111;padding-top:20px;color:#555}
     <article class="skill"><h3>Database & Infra</h3><div class="tech-badges" aria-label="PostgreSQL 16, Docker 25.x, Git 2.x, GitHub Cloud, Vite Build 5.x"><img class="tech-badge" src="https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&amp;logo=postgresql&amp;logoColor=white" alt="PostgreSQL 16" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/Docker-25.x-2496ED?style=flat-square&amp;logo=docker&amp;logoColor=white" alt="Docker 25.x" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/Git-2.x-F05032?style=flat-square&amp;logo=git&amp;logoColor=white" alt="Git 2.x" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/GitHub-Cloud-181717?style=flat-square&amp;logo=github&amp;logoColor=white" alt="GitHub Cloud" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/Vite%20Build-5.x-646CFF?style=flat-square&amp;logo=vite&amp;logoColor=white" alt="Vite Build 5.x" loading="lazy"></div><p>통행, GPS, 정산, 장비, 회원, 게시판, 감사 로그 데이터를 저장하고 조회하는 구조를 구성했습니다.</p></article>
   </div></div></div>
 
-  <div class="item"><div class="date">03</div><div class="card"><h2>Hi-Five Flow</h2><div class="flow"><div class="step" aria-label="Jetson JetPack 5.x"><img class="tech-badge" src="https://img.shields.io/badge/Jetson-JetPack%205.x-76B900?style=flat-square&amp;logo=nvidia&amp;logoColor=white" alt="Jetson JetPack 5.x" loading="lazy"></div><div class="step" aria-label="FastAPI 0.x Ingress"><img class="tech-badge" src="https://img.shields.io/badge/FastAPI%20Ingress-0.x-009688?style=flat-square&amp;logo=fastapi&amp;logoColor=white" alt="FastAPI 0.x Ingress" loading="lazy"></div><div class="step" aria-label="Spring Boot 3.x"><img class="tech-badge" src="https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=flat-square&amp;logo=springboot&amp;logoColor=white" alt="Spring Boot 3.x" loading="lazy"></div><div class="step" aria-label="PostgreSQL 16"><img class="tech-badge" src="https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&amp;logo=postgresql&amp;logoColor=white" alt="PostgreSQL 16" loading="lazy"></div><div class="step" aria-label="Vue.js 3 Dashboard"><img class="tech-badge" src="https://img.shields.io/badge/Vue%20Dashboard-3-4FC08D?style=flat-square&amp;logo=vuedotjs&amp;logoColor=white" alt="Vue.js 3 Dashboard" loading="lazy"></div></div></div></div>
-
-  <div class="item"><div class="date">04</div><div class="card" id="projects"><h2>Projects</h2><div class="grid">
+  <div class="item"><div class="date">03</div><div class="card" id="projects"><h2>Projects</h2><div class="grid">
+    <div class="project-section-title">Team Projects</div>
     <article class="project"><span>팀 프로젝트 / 모빌리티 교통 AI 솔루션</span><h3>Hi-Five Smart Tolling</h3><p>차량 번호판 인식과 GPS 기반 통행 판정을 연결해 스마트 하이패스 운영 흐름을 구현한 교통 AI 솔루션입니다.</p><div class="tech-badges" aria-label="Spring Boot 3.x, FastAPI 0.x, Vue.js 3, PostgreSQL 16, YOLO v8, OCR v1"><img class="tech-badge" src="https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=flat-square&amp;logo=springboot&amp;logoColor=white" alt="Spring Boot 3.x" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/FastAPI-0.x-009688?style=flat-square&amp;logo=fastapi&amp;logoColor=white" alt="FastAPI 0.x" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/Vue.js-3-4FC08D?style=flat-square&amp;logo=vuedotjs&amp;logoColor=white" alt="Vue.js 3" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&amp;logo=postgresql&amp;logoColor=white" alt="PostgreSQL 16" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/YOLO-v8-00FFFF?style=flat-square&amp;logo=ultralytics&amp;logoColor=111111" alt="YOLO v8" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/OCR-v1-111111?style=flat-square" alt="OCR v1" loading="lazy"></div></article>
+    <article class="project"><span>팀 프로젝트 / 지역 문화관광 웹사이트</span><h3>Hello, Busan</h3><p>부산 지역, 여행, 역사, 소식, 커뮤니티 정보를 담은 지역 문화관광 웹사이트입니다.</p><div class="tech-badges" aria-label="HTML5, CSS3, JavaScript ES6+"><img class="tech-badge" src="https://img.shields.io/badge/HTML-5-E34F26?style=flat-square&amp;logo=html5&amp;logoColor=white" alt="HTML5" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/CSS-3-1572B6?style=flat-square&amp;logo=css3&amp;logoColor=white" alt="CSS3" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&amp;logo=javascript&amp;logoColor=111111" alt="JavaScript ES6+" loading="lazy"></div></article>
+    <div class="project-section-title">Personal Projects</div>
     <article class="project"><span>개인 프로젝트 / 공공기관형 웹사이트</span><h3>성남 문화관광 사이트</h3><p>성남시 관광, 역사/문화, 축제/행사, 여행 정보, 커뮤니티 화면을 구성한 공공기관형 웹사이트입니다.</p><div class="tech-badges" aria-label="HTML5, CSS3, JavaScript ES6+, Responsive UI v1"><img class="tech-badge" src="https://img.shields.io/badge/HTML-5-E34F26?style=flat-square&amp;logo=html5&amp;logoColor=white" alt="HTML5" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/CSS-3-1572B6?style=flat-square&amp;logo=css3&amp;logoColor=white" alt="CSS3" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&amp;logo=javascript&amp;logoColor=111111" alt="JavaScript ES6+" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/Responsive%20UI-v1-111111?style=flat-square" alt="Responsive UI v1" loading="lazy"></div></article>
     <article class="project"><span>개인 프로젝트 / 쇼핑몰 프론트엔드</span><h3>LUXE SHOP</h3><p>상품 목록, 카테고리, 상품 카드, 위시리스트, 빠른 추가 UI를 갖춘 쇼핑몰 프론트엔드입니다.</p><div class="tech-badges" aria-label="Vue.js 3, Vite 5.x, Bootstrap 5.x, JSON Data v1"><img class="tech-badge" src="https://img.shields.io/badge/Vue.js-3-4FC08D?style=flat-square&amp;logo=vuedotjs&amp;logoColor=white" alt="Vue.js 3" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/Vite-5.x-646CFF?style=flat-square&amp;logo=vite&amp;logoColor=white" alt="Vite 5.x" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/Bootstrap-5.x-7952B3?style=flat-square&amp;logo=bootstrap&amp;logoColor=white" alt="Bootstrap 5.x" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/JSON%20Data-v1-111111?style=flat-square" alt="JSON Data v1" loading="lazy"></div></article>
-    <article class="project"><span>팀 프로젝트 / 지역 문화관광 웹사이트</span><h3>Hello, Busan</h3><p>부산 지역, 여행, 역사, 소식, 커뮤니티 정보를 담은 지역 문화관광 웹사이트입니다.</p><div class="tech-badges" aria-label="HTML5, CSS3, JavaScript ES6+"><img class="tech-badge" src="https://img.shields.io/badge/HTML-5-E34F26?style=flat-square&amp;logo=html5&amp;logoColor=white" alt="HTML5" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/CSS-3-1572B6?style=flat-square&amp;logo=css3&amp;logoColor=white" alt="CSS3" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&amp;logo=javascript&amp;logoColor=111111" alt="JavaScript ES6+" loading="lazy"></div></article>
+    <article class="project"><span>개인 프로젝트 / AI 추천 서비스</span><h3>Rider Starter AI</h3><p>라이더 조건을 바탕으로 오토바이 모델과 구매 가이드를 추천하는 AI 기반 서비스입니다.</p><div class="tech-badges" aria-label="Vue.js 3, FastAPI, Supabase, Render"><img class="tech-badge" src="https://img.shields.io/badge/Vue.js-3-4FC08D?style=flat-square&amp;logo=vuedotjs&amp;logoColor=white" alt="Vue.js 3" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/FastAPI-0.x-009688?style=flat-square&amp;logo=fastapi&amp;logoColor=white" alt="FastAPI" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/Supabase-DB-3ECF8E?style=flat-square&amp;logo=supabase&amp;logoColor=white" alt="Supabase" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/Render-Deploy-46E3B7?style=flat-square&amp;logo=render&amp;logoColor=111111" alt="Render" loading="lazy"></div></article>
+    <article class="project"><span>개인 프로젝트 / 전세사기 예방 서비스</span><h3>JS 전세 안전 서비스</h3><p>전세 매물의 위험도, 주변 중개사, 체크리스트를 확인할 수 있는 전세사기 예방 플랫폼입니다.</p><div class="tech-badges" aria-label="JavaScript, FastAPI, Supabase"><img class="tech-badge" src="https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&amp;logo=javascript&amp;logoColor=111111" alt="JavaScript" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/FastAPI-0.x-009688?style=flat-square&amp;logo=fastapi&amp;logoColor=white" alt="FastAPI" loading="lazy"><img class="tech-badge" src="https://img.shields.io/badge/Supabase-DB-3ECF8E?style=flat-square&amp;logo=supabase&amp;logoColor=white" alt="Supabase" loading="lazy"></div></article>
   </div></div></div>
 
-  <div class="item"><div class="date">05</div><div class="card"><h2>Contact</h2><div class="contact-line"><a href="mailto:lasr5324@gmail.com">lasr5324@gmail.com</a><a href="#">GitHub 링크 입력 필요</a><a href="#">Resume PDF 연결 필요</a></div></div></div>
+  <div class="item"><div class="date">05</div><div class="card"><h2>Contact</h2><div class="contact-grid">
+    <div>
+      <p>메일, GitHub, 포트폴리오 PDF 저장 기능으로 바로 연락하고 확인할 수 있습니다.</p>
+      <div class="contact-line">
+        <a href="mailto:lasr5324@gmail.com">lasr5324@gmail.com</a>
+        <a href="https://github.com/www3158" target="_blank" rel="noopener">GitHub</a>
+        <button type="button" id="savePdfBtn">PDF 저장</button>
+      </div>
+    </div>
+    <form class="contact-form" action="https://formsubmit.co/lasr5324@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="[Portfolio Contact] 새 문의">
+      <input type="hidden" name="_captcha" value="false">
+      <input id="contactName" name="name" type="text" placeholder="이름" required>
+      <input id="contactEmail" name="email" type="email" placeholder="회신 이메일" required>
+      <textarea id="contactMessage" name="message" placeholder="문의 내용" required></textarea>
+      <button type="submit">메일 보내기</button>
+    </form>
+  </div></div></div>
 </div>
 
 <footer><p>© 2026 박주환 Portfolio · Timeline Roadmap Avatar Version</p></footer>
@@ -136,8 +166,18 @@ footer{border-top:3px solid #111;padding-top:20px;color:#555}
       ]
     },
     {
-      title:"Seongnam Culture Tourism",
+      title:"Hello, Busan",
       previewLabel:"상세 화면 보기",
+      shots:[
+        {src:"project-screenshots/busan-main-bridge.png",caption:"광안대교 메인",alt:"Hello Busan bridge landmark page"},
+        {src:"project-screenshots/busan-history-tombs.png",caption:"역사 명소 화면",alt:"Hello Busan history tombs page"},
+        {src:"project-screenshots/busan-market.png",caption:"국제시장 화면",alt:"Hello Busan local market page"}
+      ]
+    },
+    {
+      title:"Seongnam Culture Tourism",
+      url:"https://www3158.github.io/web01",
+      previewLabel:"프로젝트 열기",
       shots:[
         {src:"project-screenshots/seongnam-main-hero.png",caption:"메인 관광 화면",alt:"Seongnam culture tourism main hero"},
         {src:"project-screenshots/seongnam-attractions.png",caption:"관광 카드 구성",alt:"Seongnam attraction cards"},
@@ -146,7 +186,8 @@ footer{border-top:3px solid #111;padding-top:20px;color:#555}
     },
     {
       title:"LUXE SHOP",
-      previewLabel:"상세 화면 보기",
+      url:"https://www3158.github.io/web03",
+      previewLabel:"프로젝트 열기",
       shots:[
         {src:"project-screenshots/luxe-main-hero.png",caption:"컬렉션 메인",alt:"LUXE SHOP collection hero"},
         {src:"project-screenshots/luxe-new-arrivals.png",caption:"신상품 목록",alt:"LUXE SHOP new arrivals product cards"},
@@ -154,14 +195,21 @@ footer{border-top:3px solid #111;padding-top:20px;color:#555}
       ]
     },
     {
-      title:"Hello, Busan",
-      previewLabel:"상세 화면 보기",
+      title:"Rider Starter AI",
+      url:"https://www3158.github.io/web02",
+      previewLabel:"프로젝트 열기",
       shots:[
-        {src:"project-screenshots/busan-main-bridge.png",caption:"광안대교 메인",alt:"Hello Busan bridge landmark page"},
-        {src:"project-screenshots/busan-history-tombs.png",caption:"역사 명소 화면",alt:"Hello Busan history tombs page"},
-        {src:"project-screenshots/busan-market.png",caption:"국제시장 화면",alt:"Hello Busan local market page"}
+        {src:"web02/assets/joeun-call-logo-DlifNAty.png",caption:"Rider Starter AI",alt:"Rider Starter AI service"}
       ]
-    }
+    },
+    {
+      title:"JS 전세 안전 서비스",
+      url:"https://www3158.github.io/web04",
+      previewLabel:"프로젝트 열기",
+      shots:[
+        {src:"web04/assets/property/building-1.jpg",caption:"JS 전세 안전 서비스",alt:"JS jeonse safety service"}
+      ]
+    },
   ];
 
   var modal=document.getElementById("shotModal");
@@ -200,9 +248,12 @@ footer{border-top:3px solid #111;padding-top:20px;color:#555}
     var button=document.createElement("button");
     button.type="button";
     button.className="project-preview";
-    button.setAttribute("aria-label",project.title+" detail screenshots");
+    button.setAttribute("aria-label",project.title+" detail page");
     button.innerHTML='<img src="'+first.src+'" alt="'+first.alt+'" loading="lazy"><span>'+project.previewLabel+"</span>";
-    button.addEventListener("click",function(){openProject(project);});
+    button.addEventListener("click",function(){
+      if(project.url){window.open(project.url,"_blank","noopener");return;}
+      openProject(project);
+    });
     card.appendChild(button);
   });
 
@@ -212,6 +263,10 @@ footer{border-top:3px solid #111;padding-top:20px;color:#555}
   });
   document.addEventListener("keydown",function(event){
     if(event.key==="Escape"&&modal.classList.contains("open"))closeProject();
+  });
+
+  document.getElementById("savePdfBtn").addEventListener("click",function(){
+    window.print();
   });
 })();
 </script>
