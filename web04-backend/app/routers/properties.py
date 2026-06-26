@@ -13,8 +13,8 @@ def ensure_property_columns(cur):
 
 @router.get("")
 def get_properties(authorization: Optional[str] = Header(default=None)):
-    ensure_tables()
     current_user_id(authorization)
+    ensure_tables()
     sql = """
         SELECT
             p.id,
@@ -74,8 +74,8 @@ def get_properties(authorization: Optional[str] = Header(default=None)):
 
 @router.get("/{property_id}")
 def get_property(property_id: int, authorization: Optional[str] = Header(default=None)):
-    ensure_tables()
     current_user_id(authorization)
+    ensure_tables()
     sql = """
         SELECT
             p.id,
