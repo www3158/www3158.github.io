@@ -17,7 +17,7 @@
 
     <section class="auth-card">
       <h2>회원가입</h2>
-      <p class="desc">계정 정보와 희망 조건을 입력해주세요. Gmail 이메일 인증 후 가입할 수 있습니다.</p>
+      <p class="desc">계정 정보와 희망 조건을 입력해주세요.</p>
 
       <form id="signupForm" class="form">
         <div class="split">
@@ -30,16 +30,10 @@
         </div>
 
         <div class="section-box">
-          <h3>이메일 인증</h3>
+          <h3>이메일</h3>
           <div class="phone-row">
             <input id="signupEmail" type="email" autocomplete="email" placeholder="이메일 주소" />
-            <button id="sendEmailCode" class="sub-btn" type="button">인증번호 발송</button>
           </div>
-          <div class="phone-row">
-            <input id="emailCode" inputmode="numeric" placeholder="인증번호" />
-            <button id="verifyEmailCode" class="sub-btn" type="button">인증 확인</button>
-          </div>
-          <p id="emailStatus" class="status"></p>
         </div>
 
         <div class="section-box">
@@ -80,7 +74,6 @@
   <script>
     const API_BASE_URL="https://www3158-web04-api.onrender.com";
     const TOKEN_KEY="jeonseAuthToken";
-    let emailVerified=false;
 
     async function api(path, options={}){
       const response=await fetch(`${API_BASE_URL}${path}`,{
@@ -92,45 +85,12 @@
       return data;
     }
 
-    sendEmailCode.onclick=async ()=>{
-      try{
-        emailStatus.classList.remove("error");
-        await api("/api/auth/send-email-code",{
-          method:"POST",
-          body:JSON.stringify({email:signupEmail.value})
-        });
-        emailStatus.textContent="인증번호를 이메일로 발송했습니다.";
-      }catch(err){
-        emailStatus.classList.add("error");
-        emailStatus.textContent=err.message;
-      }
-    };
-    verifyEmailCode.onclick=async ()=>{
-      try{
-        await api("/api/auth/verify-email-code",{
-          method:"POST",
-          body:JSON.stringify({email:signupEmail.value,code:emailCode.value})
-        });
-        emailVerified=true;
-        emailStatus.classList.remove("error");
-        emailStatus.textContent="이메일 인증이 완료되었습니다.";
-      }catch(err){
-        emailVerified=false;
-        emailStatus.classList.add("error");
-        emailStatus.textContent=err.message;
-      }
-    };
     signupForm.onsubmit=async e=>{
       e.preventDefault();
       signupStatus.classList.remove("error");
       if(signupPassword.value!==signupPasswordConfirm.value){
         signupStatus.classList.add("error");
         signupStatus.textContent="비밀번호가 일치하지 않습니다.";
-        return;
-      }
-      if(!emailVerified){
-        signupStatus.classList.add("error");
-        signupStatus.textContent="이메일 인증을 완료해주세요.";
         return;
       }
       if(!termsAgree.checked||!privacyAgree.checked){

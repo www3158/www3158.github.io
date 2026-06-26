@@ -464,18 +464,10 @@ def register(payload: RegisterRequest):
     ensure_tables()
     email = normalize_email(payload.email)
     phone = normalize_phone(payload.phone or "")
+    if "@" not in email or "." not in email:
+        raise HTTPException(status_code=400, detail="이메일 주소를 확인해주세요.")
     with get_connection() as conn:
         with conn.cursor() as cur:
-            cur.execute(
-                """
-                SELECT id FROM user_email_verifications
-                WHERE email = %s AND verified = TRUE AND expires_at > NOW()
-                ORDER BY id DESC LIMIT 1
-                """,
-                (email,),
-            )
-            if not cur.fetchone():
-                raise HTTPException(status_code=400, detail="이메일 인증을 완료해주세요.")
             cur.execute(
                 "SELECT id FROM app_users WHERE username = %s OR email = %s OR (%s <> '' AND phone = %s)",
                 (payload.username.strip(), email, phone, phone),
