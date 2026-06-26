@@ -12,7 +12,11 @@ class Settings(BaseSettings):
     @computed_field
     @property
     def cors_origin_list(self) -> list[str]:
-        return [origin.strip() for origin in self.cors_origins.split(",") if origin.strip()]
+        origins = [origin.strip() for origin in self.cors_origins.split(",") if origin.strip()]
+        for origin in ("https://www3158.github.io", "http://localhost:5173", "http://127.0.0.1:5173"):
+            if origin not in origins:
+                origins.append(origin)
+        return origins
 
 
 settings = Settings()
