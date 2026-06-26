@@ -278,9 +278,17 @@ def send_email_code(email: str, code: str):
     message.set_content(f"전세가드 AI 회원가입 인증번호는 {code}입니다.\n\n5분 안에 입력해주세요.")
     try:
         with force_ipv4_dns():
-            with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=8) as smtp:
-                smtp.login(smtp_user, smtp_password)
-                smtp.send_message(message)
+            try:
+                with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=8) as smtp:
+                    smtp.login(smtp_user, smtp_password)
+                    smtp.send_message(message)
+            except (smtplib.SMTPConnectError, OSError, TimeoutError):
+                with smtplib.SMTP("smtp.gmail.com", 587, timeout=8) as smtp:
+                    smtp.ehlo()
+                    smtp.starttls()
+                    smtp.ehlo()
+                    smtp.login(smtp_user, smtp_password)
+                    smtp.send_message(message)
     except (smtplib.SMTPException, OSError, TimeoutError) as exc:
         raise HTTPException(status_code=502, detail="이메일 발송에 실패했습니다.") from exc
 
