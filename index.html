@@ -90,7 +90,7 @@ footer{padding-top:20px;color:#555}
     <div class="hero-actions">
       <a class="btn" href="https://github.com/www3158" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" href="mailto:lasr5324@gmail.com">Email</a>
-      <button class="btn" type="button" id="savePdfBtn">PDF 저장</button>
+      <a class="btn" href="resume/park-juhwan-resume.pdf" download="park-juhwan-resume.pdf">PDF 저장</a>
     </div>
   </div>
   <aside class="avatar-card">
@@ -258,7 +258,6 @@ footer{padding-top:20px;color:#555}
   closeButton.addEventListener("click",closeProject);
   modal.addEventListener("click",function(event){if(event.target===modal)closeProject();});
   document.addEventListener("keydown",function(event){if(event.key==="Escape"&&modal.classList.contains("open"))closeProject();});
-  document.getElementById("savePdfBtn").addEventListener("click",function(){window.print();});
 
   var sections=[].slice.call(document.querySelectorAll(".section[id]"));
   var navLinks=[].slice.call(document.querySelectorAll(".page-nav a"));
