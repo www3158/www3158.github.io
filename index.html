@@ -36,6 +36,7 @@ h1{font-size:68px;line-height:1;margin:12px 0 16px;letter-spacing:0}
 .project,.skill-box{border:2px solid #111;background:#fff;padding:24px;min-width:0}
 .project.featured{display:grid;grid-template-columns:1fr minmax(220px,320px);gap:28px;align-items:start;border-width:3px;box-shadow:6px 6px 0 #111}
 .project-main{min-width:0}
+.project-repo{margin-top:18px;padding:8px 12px;font-size:14px}
 .project.compact{padding:16px}
 .project span{color:#555;font-weight:900;font-size:13px}
 .project h3,.skill-box h3{margin:10px 0 12px;font-size:23px;line-height:1.2;letter-spacing:0}
@@ -193,10 +194,10 @@ footer{padding-top:20px;color:#555}
 (function(){
   document.documentElement.classList.add("js");
   var projects=[
-    {title:"Rider Starter AI",url:"https://www3158.github.io/web02",previewLabel:"프로젝트 열기",shots:[{src:"web02/assets/joeun-call-logo-DlifNAty.png",caption:"Rider Starter AI",alt:"Rider Starter AI service"}]},
-    {title:"JS 전세 안전 서비스",url:"https://www3158.github.io/web04",previewLabel:"프로젝트 열기",shots:[{src:"web04/assets/property/building-1.jpg",caption:"JS 전세 안전 서비스",alt:"JS jeonse safety service"}]},
-    {title:"Seongnam Culture Tourism",url:"https://www3158.github.io/web01",previewLabel:"프로젝트 열기",shots:[{src:"project-screenshots/seongnam-main-hero.png",caption:"메인 관광 화면",alt:"Seongnam culture tourism main hero"}]},
-    {title:"LUXE SHOP",url:"https://www3158.github.io/web03",previewLabel:"프로젝트 열기",shots:[{src:"project-screenshots/luxe-main-hero.png",caption:"컬렉션 메인",alt:"LUXE SHOP collection hero"}]},
+    {title:"Rider Starter AI",url:"https://www3158.github.io/web02",repoUrl:"https://github.com/www3158/www3158.github.io/tree/main/web02",previewLabel:"프로젝트 열기",shots:[{src:"web02/assets/joeun-call-logo-DlifNAty.png",caption:"Rider Starter AI",alt:"Rider Starter AI service"}]},
+    {title:"JS 전세 안전 서비스",url:"https://www3158.github.io/web04",repoUrl:"https://github.com/www3158/www3158.github.io/tree/main/web04",previewLabel:"프로젝트 열기",shots:[{src:"web04/assets/property/building-1.jpg",caption:"JS 전세 안전 서비스",alt:"JS jeonse safety service"}]},
+    {title:"Seongnam Culture Tourism",url:"https://www3158.github.io/web01",repoUrl:"https://github.com/www3158/www3158.github.io/tree/main/web01",previewLabel:"프로젝트 열기",shots:[{src:"project-screenshots/seongnam-main-hero.png",caption:"메인 관광 화면",alt:"Seongnam culture tourism main hero"}]},
+    {title:"LUXE SHOP",url:"https://www3158.github.io/web03",repoUrl:"https://github.com/www3158/www3158.github.io/tree/main/web03",previewLabel:"프로젝트 열기",shots:[{src:"project-screenshots/luxe-main-hero.png",caption:"컬렉션 메인",alt:"LUXE SHOP collection hero"}]},
     {title:"Hi-Five Smart Tolling",previewLabel:"상세 화면 보기",shots:[{src:"project-screenshots/hifive-master-overview.png",caption:"마스터 대시보드",alt:"Hi-Five master admin overview"},{src:"project-screenshots/hifive-member-admin.png",caption:"회원 및 권한 관리",alt:"Hi-Five member and dashboard admin"},{src:"project-screenshots/hifive-operator-dashboard.png",caption:"실시간 관제 화면",alt:"Hi-Five live tolling dashboard"}]},
     {title:"Hello, Busan",previewLabel:"상세 화면 보기",shots:[{src:"project-screenshots/busan-main-bridge.png",caption:"광안대교 메인",alt:"Hello Busan bridge landmark page"},{src:"project-screenshots/busan-history-tombs.png",caption:"역사 명소 화면",alt:"Hello Busan history tombs page"},{src:"project-screenshots/busan-market.png",caption:"국제시장 화면",alt:"Hello Busan local market page"}]}
   ];
@@ -242,6 +243,15 @@ footer{padding-top:20px;color:#555}
       if(project.url){window.open(project.url,"_blank","noopener");return;}
       openProject(project);
     });
+    if(project.repoUrl){
+      var repoLink=document.createElement("a");
+      repoLink.className="btn project-repo";
+      repoLink.href=project.repoUrl;
+      repoLink.target="_blank";
+      repoLink.rel="noopener";
+      repoLink.textContent="GitHub 저장소";
+      (card.querySelector(".project-main")||card).appendChild(repoLink);
+    }
     card.appendChild(button);
   });
 
