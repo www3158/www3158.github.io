@@ -37,7 +37,9 @@ h1{font-size:68px;line-height:1;margin:12px 0 16px;letter-spacing:0}
 .project.featured{display:grid;grid-template-columns:1fr minmax(220px,320px);gap:28px;align-items:start;border-width:3px;box-shadow:6px 6px 0 #111}
 .project-main{min-width:0}
 .project-repo{margin-top:18px;padding:8px 12px;font-size:14px}
-.project.compact{padding:16px}
+.project.compact{padding:16px;display:flex;flex-direction:column}
+.project.compact .project-repo{align-self:flex-start;margin-bottom:20px}
+.project.compact .project-preview{margin-top:auto}
 .project span{color:#555;font-weight:900;font-size:13px}
 .project h3,.skill-box h3{margin:10px 0 12px;font-size:23px;line-height:1.2;letter-spacing:0}
 .project p,.skill-box p{margin:0;color:#333;word-break:keep-all}
@@ -153,7 +155,6 @@ footer{padding-top:20px;color:#555}
 
   <h2 style="margin-top:28px">Other Projects</h2>
   <div class="other-grid">
-    <article class="project compact"><span>개인 / 쇼핑몰</span><h3>LUXE SHOP</h3><p>상품 목록과 카테고리 중심의 쇼핑몰 프론트엔드입니다.</p></article>
     <article class="project compact"><span>팀 / 교통 AI</span><h3>Hi-Five Smart Tolling</h3><p>번호판 인식과 GPS 판정을 연결한 스마트 톨링 프로젝트입니다.</p></article>
     <article class="project compact"><span>팀 / 지역 웹사이트</span><h3>Hello, Busan</h3><p>부산 여행, 역사, 지역 정보를 담은 문화관광 웹사이트입니다.</p></article>
   </div>
@@ -197,7 +198,6 @@ footer{padding-top:20px;color:#555}
     {title:"Rider Starter AI",url:"https://www3158.github.io/web02",repoUrl:"https://github.com/www3158/www3158.github.io/tree/main",previewLabel:"프로젝트 열기",shots:[{src:"web02/assets/joeun-call-logo-DlifNAty.png",caption:"Rider Starter AI",alt:"Rider Starter AI service"}]},
     {title:"JS 전세 안전 서비스",url:"https://www3158.github.io/web04",repoUrl:"https://github.com/www3158/www3158.github.io/tree/main",previewLabel:"프로젝트 열기",shots:[{src:"web04/assets/property/building-1.jpg",caption:"JS 전세 안전 서비스",alt:"JS jeonse safety service"}]},
     {title:"Seongnam Culture Tourism",url:"https://www3158.github.io/web01",repoUrl:"https://github.com/www3158/www3158.github.io/tree/main",previewLabel:"프로젝트 열기",shots:[{src:"project-screenshots/seongnam-main-hero.png",caption:"메인 관광 화면",alt:"Seongnam culture tourism main hero"}]},
-    {title:"LUXE SHOP",url:"https://www3158.github.io/web03",repoUrl:"https://github.com/www3158/www3158.github.io/tree/main",previewLabel:"프로젝트 열기",shots:[{src:"project-screenshots/luxe-main-hero.png",caption:"컬렉션 메인",alt:"LUXE SHOP collection hero"}]},
     {title:"Hi-Five Smart Tolling",previewLabel:"상세 화면 보기",shots:[{src:"project-screenshots/hifive-master-overview.png",caption:"마스터 대시보드",alt:"Hi-Five master admin overview"},{src:"project-screenshots/hifive-member-admin.png",caption:"회원 및 권한 관리",alt:"Hi-Five member and dashboard admin"},{src:"project-screenshots/hifive-operator-dashboard.png",caption:"실시간 관제 화면",alt:"Hi-Five live tolling dashboard"}]},
     {title:"Hello, Busan",previewLabel:"상세 화면 보기",shots:[{src:"project-screenshots/busan-main-bridge.png",caption:"광안대교 메인",alt:"Hello Busan bridge landmark page"},{src:"project-screenshots/busan-history-tombs.png",caption:"역사 명소 화면",alt:"Hello Busan history tombs page"},{src:"project-screenshots/busan-market.png",caption:"국제시장 화면",alt:"Hello Busan local market page"}]}
   ];
